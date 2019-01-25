@@ -31,7 +31,7 @@
 - name: Install Java {{ java_version }}
   apt:
     name: "oracle-java{{ java_version }}-installer"
-    update_cache: yes
+    update_cache: true
     state: present
   register: result
   until: result is success

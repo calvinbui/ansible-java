@@ -1,36 +1,8 @@
 ---
 
-- name: Add webupd8team/java repo
-  apt_repository:
-    repo: ppa:webupd8team/java
-    state: present
-
-- name: Java automation dependencies
-  apt:
-    name: software-properties-common
-    state: present
-  register: result
-  until: result is success
-  retries: 5
-  delay: 5
-
-- name: Accept Oracle license
-  debconf:
-    name: "oracle-java{{ java_version }}-installer"
-    question: shared/accepted-oracle-license-v1-1
-    value: 'true'
-    vtype: select
-
-- name: Seen Oracle license
-  debconf:
-    name: "oracle-java{{ java_version }}-installer"
-    question: shared/accepted-oracle-license-v1-1
-    value: 'true'
-    vtype: seen
-
 - name: Install Java {{ java_version }}
   apt:
-    name: "oracle-java{{ java_version }}-installer"
+    name: "openjdk-{{ java_version }}-jre{{ '-headless' if java_headless else '' }}"
     update_cache: true
     state: present
   register: result
@@ -41,11 +13,11 @@
 - name: Set as default Java
   alternatives:
     name: java
-    path: "/usr/lib/jvm/java-{{ java_version }}-oracle/jre/bin/java"
+    path: "/usr/lib/jvm/java-{{ java_version }}-openjdk-amd64/jre/bin/java"
 
 - name: Set JAVA_HOME
   lineinfile:
     dest: /etc/environment
     state: present
     regexp: '^JAVA_HOME'
-    line: "JAVA_HOME=/usr/lib/jvm/java-{{ java_version }}-oracle"
+    line: "JAVA_HOME=/usr/lib/jvm/java-{{ java_version }}-openjdk-amd64"

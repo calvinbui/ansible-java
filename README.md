@@ -2,9 +2,7 @@
 
 # Ansible Java
 
-Installs Oracle Java. Probably only 8.
-
-https://launchpad.net/~webupd8team/+archive/ubuntu/java
+Installs OpenJDK Java. Probably only 8.
 
 ##  Requirements
 
@@ -13,6 +11,7 @@ N/A
 ## Role Variables
 
 `java_version`: Version of Java to install.
+`java_headless`: Install headless boolean
 
 ## Dependencies
 

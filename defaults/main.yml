@@ -1,4 +1,4 @@
 ---
 
 java_version: 8
-java_headless: True
+java_headless: true

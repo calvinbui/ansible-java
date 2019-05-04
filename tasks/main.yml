@@ -2,8 +2,8 @@
 
 - name: Install Java {{ java_version }}
   apt:
-    name: "openjdk-{{ java_version }}-jre{{ '-headless' if java_headless else '' }}"
-    update_cache: true
+    name: "openjdk-{{ java_version }}-jre{{ '-headless' if java_headless }}"
+    update_cache: True
     state: present
   register: result
   until: result is success

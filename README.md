@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.com/calvinbui/ansible-java.svg?branch=master)](https://travis-ci.com/calvinbui/ansible-java)
+![GitHub release](https://img.shields.io/github/release/calvinbui/ansible-java.svg)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/36550.svg)
+![Ansible Role](https://img.shields.io/ansible/role/d/36550.svg)
 
 # Ansible Java
 
